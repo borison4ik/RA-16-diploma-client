@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
+import { MainLayout } from './layouts/MainLayout';
+import { About } from './pages/About';
+import { Cart } from './pages/Cart';
+import { Catalog } from './pages/Catalog';
+import { Contacts } from './pages/Contacts';
+import { Error404 } from './pages/Error404';
+import { Home } from './pages/Home';
+import { Product } from './pages/Product';
+
+import { RoutesPath } from './Routes';
+
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path={RoutesPath.HOME} element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path={RoutesPath.CATALOG} element={<Catalog />} />
+        <Route path={`${RoutesPath.CATALOG}/:id`} element={<Product />} />
+        <Route path={RoutesPath.ABOUT} element={<About />} />
+        <Route path={RoutesPath.CONTACTS} element={<Contacts />} />
+        <Route path={RoutesPath.CART} element={<Cart />} />
+        <Route path='*' element={<Error404 />} />
+      </Route>
+    </Routes>
   );
-}
-
-export default App;
+};
