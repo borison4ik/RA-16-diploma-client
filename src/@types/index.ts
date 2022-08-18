@@ -1,3 +1,10 @@
+export enum loadingStatuses {
+  fulfilled = 'fulfilled',
+  rejected = 'rejected',
+  pendingAll = 'pendingAll',
+  pendingList = 'pendingList',
+  pendingMore = 'pendingMore',
+}
 export interface ICategory {
   id: number;
   title: string;
@@ -32,4 +39,13 @@ export interface IProduct {
   price: number;
   oldPrice: number;
   sizes: ISize[];
+}
+
+export interface ICartItem {
+  id: number;
+  title: string;
+  size: string;
+  quantity: number;
+  price: number;
+  total?: number;
 }

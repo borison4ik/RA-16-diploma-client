@@ -19,7 +19,7 @@ export const Card: React.FC<ICategoryItem> = ({
         <img
           src={images[0]}
           className={cn('card-img-top img-fluid', classNames)}
-          alt="Босоножки 'MYER'"
+          alt={title}
         />
       )}
       <div className='card-body'>

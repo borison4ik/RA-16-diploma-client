@@ -174,21 +174,29 @@ section {
 
 /* Catalog */
 .catalog {
-  min-height: 600px;
+  min-height: 1165px;
 }
-
 .catalog-categories {
   font-size: 1.3rem;
   margin-bottom: 2em;
 }
+.catalog-item {
+  min-height: 596px;
+}
 
 .catalog-item-card {
   margin-bottom: 1em;
+  width: 100%;
+  display: block;
+  height: 300px;
+  object-fit: contain;
 }
 
 .catalog-item-size {
   display: inline-block;
   padding: 0 10px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .catalog-item-size.selected {
@@ -214,6 +222,14 @@ section {
   border: none;
   outline: none;
   box-shadow: none;
+}
+
+/* product */
+.product-btns {
+}
+.btn-purchase {
+}
+.btn-to-cart {
 }
 
 /* Footer */

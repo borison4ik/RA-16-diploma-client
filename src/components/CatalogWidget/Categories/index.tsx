@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-import { ICategory } from '../../../@types';
 import { CategoryItem } from './CategoryItem';
+import { useAppSelector } from '../../../hooks/redux';
+import { ICategory } from '../../../@types';
 
 export const Categories: React.FC = () => {
-  const [items, setItems] = useState<ICategory[]>([]);
+  const { categories, activeCategoryId } = useAppSelector(
+    (state) => state.categoriesReducer,
+  );
+  let prepCategory: Array<ICategory> = [];
 
-  useEffect(() => {
-    axios
-      .get<ICategory[]>(`${process.env.REACT_APP_CATEGORIES_API}`)
-      .then((response) => {
-        setItems(response.data);
-      });
-  }, []);
-
-  if (!items.length) return <></>;
+  if (categories.length > 0) {
+    prepCategory = [{ id: 0, title: 'Все' }, ...categories];
+  }
 
   return (
     <ul className='catalog-categories nav justify-content-center'>
-      <li className='nav-item'>
-        <a className='nav-link active' href='#'>
-          Все
-        </a>
-      </li>
-      {items.map((item) => (
-        <CategoryItem key={item.id} {...item} />
+      {prepCategory.map((item) => (
+        <CategoryItem
+          key={item.id}
+          {...item}
+          active={item.id === activeCategoryId}
+        />
       ))}
     </ul>
   );

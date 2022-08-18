@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { CartMini } from '../../components/CartMini';
 import { Menu } from '../../components/Menu';
-import { SearchForm } from '../../components/SearchForm';
+import { SearchFormTop } from '../../components/SearchFormTop';
 
 import { DATA } from '../../DATA';
 
@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
               <Menu menuItems={headerMenu} classNames={'navbar-nav mr-auto'} />
               <div>
                 <div className='header-controls-pics'>
-                  <SearchForm />
+                  <SearchFormTop />
                   <CartMini />
                 </div>
               </div>
